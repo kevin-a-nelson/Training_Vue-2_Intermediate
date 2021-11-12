@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  
+  <body>
+    <div id="app">
+      {{ message }}
+      <!-- Do all your HTML work in this #app div. -->
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        
+        // Do all your Vue work in this JS object.
+        
+        data: {
+          message: "Hello Vue!"
+        },
+      });
+    </script>
+  </body>
+</html>
