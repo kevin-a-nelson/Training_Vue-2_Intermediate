@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+
+.edit-form {
+    display: flex;
+    height: 49px;
+}
+
+.edit-form-container {
+    display: flex;
+    position: relative;
+    bottom: 0px;
+}
+
+.edit-form-input input {
+    width: 313px;
+    margin-right: 10px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+.editButton {
+    background: red;
+    margin-right: 20px;
+}
+
+p {
+    height: 0;
+}
+
+#app {
+    max-width: 400px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+input {
+    width: 95%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    /* line-height: 29px; */
+    justify-content: space-between;
+    text-align: left;
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+#totalNotes {
+    margin-bottom: 10px;
+}
+
+#totalFilteredNotes {
+    margin-bottom: 10px;
+}

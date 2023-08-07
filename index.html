@@ -1,24 +1,46 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://unpkg.com/vue"></script>
-  </head>
-  
-  <body>
+
+
+<head>
+    <title>Todo App</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Todo App</h1>
     <div id="app">
-      {{ message }}
-      <!-- Do all your HTML work in this #app div. -->
+        <div id="totalNotes">Total Notes: {{ totalTodos }}</div>
+        <div id="totalFilteredNotes">Total Filtered Notes: {{ filteredTotal }}</div>
+
+        <input v-model="filterText" placeholder="Search">
+
+        <div>
+            <input v-model="newTodo" @keyup.enter="addTodo" placeholder="Make a Todo">
+            <button @click="addTodo">Add</button>
+        </div>
+        <ul v-for="(todo, index) in filteredTodos">
+            <div v-if="todo.id === todoToEditId">
+                <form class="edit-form" @submit.prevent="saveTodo($event)">
+                    <div class="edit-form-container">
+                        <div class="edit-form-input">
+                            <input :value="todo.text">
+                        </div>
+                        <div>
+                            <button>Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div v-else>
+                <todo-item :key="index" :todo="todo" @edit="editTodo(todo.id)"
+                    @remove="removeTodo(todo.id)"></todo-item>
+            </div>
+        </ul>
     </div>
 
-    <script>
-      var app = new Vue({
-        el: "#app",
-        
-        // Do all your Vue work in this JS object.
-        
-        data: {
-          message: "Hello Vue!"
-        },
-      });
-    </script>
-  </body>
+    <script src="script.js"></script>
+</body>
+
 </html>
