@@ -4,11 +4,13 @@ Vue.component('todo-item', {
     props: ['todo'],
     template: `
     <li>
-        <p>
-            {{ todo.text }}
-        </p>
-        <div className="editButtons">
-            <button className="editButton" style="margin-right: 5px" @click="$emit('edit')">Edit</button>
+        <div class="todo-text">
+            <p>
+                {{ todo.text }}
+            </p>
+        </div>
+        <div>
+            <button style="margin-right: 5px" @click="$emit('edit')">Edit</button>
             <button @click="$emit('remove')">Delete</button>
         </div>
       </li >
@@ -25,7 +27,9 @@ new Vue({
             newTodos: [{ id: 0, text: "Hello World" }],
             todoToEditId: -1,
             newId: 0,
-            filterText: ''
+            filterText: '',
+            activeClass: 'active',
+            errorClass: 'text-danger',
         };
     },
     watch: {
@@ -37,6 +41,9 @@ new Vue({
         }
     },
     computed: {
+        lastNote() {
+            return { 'last-note': true }
+        },
         totalTodos() {
             return this.newTodos.length;
         },

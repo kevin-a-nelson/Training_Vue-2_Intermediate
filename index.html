@@ -16,28 +16,30 @@
 
         <input v-model="filterText" placeholder="Search">
 
-        <div>
+        <div :class="[activeClass, errorClass]">
             <input v-model="newTodo" @keyup.enter="addTodo" placeholder="Make a Todo">
             <button @click="addTodo">Add</button>
         </div>
-        <ul v-for="(todo, index) in filteredTodos">
-            <div v-if="todo.id === todoToEditId">
-                <form class="edit-form" @submit.prevent="saveTodo($event)">
-                    <div class="edit-form-container">
-                        <div class="edit-form-input">
-                            <input :value="todo.text">
-                        </div>
-                        <div>
-                            <button>Save</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div v-else>
-                <todo-item :key="index" :todo="todo" @edit="editTodo(todo.id)"
-                    @remove="removeTodo(todo.id)"></todo-item>
-            </div>
-        </ul>
+        <transition-group name="list" tag="ul">
+            <ul v-for="(todo, index) in filteredTodos" :key="todo.id">
+                <div v-if="todo.id === todoToEditId">
+                    <li :class="index === filteredTodos.length - 1 ? lastNote : ''">
+                        <form class="edit-form" @submit.prevent="saveTodo($event)">
+                            <div class="edit-form-input">
+                                <input :value="todo.text">
+                            </div>
+                            <div>
+                                <button>Save</button>
+                            </div>
+                        </form>
+                    </li>
+                </div>
+                <div v-else>
+                    <todo-item :key="index" :todo="todo" @edit="editTodo(todo.id)"
+                        @remove="removeTodo(todo.id)"></todo-item>
+                </div>
+            </ul>
+        </transition-group>
     </div>
 
     <script src="script.js"></script>

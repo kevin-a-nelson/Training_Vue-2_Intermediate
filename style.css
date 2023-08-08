@@ -6,13 +6,6 @@ body {
 
 .edit-form {
     display: flex;
-    height: 49px;
-}
-
-.edit-form-container {
-    display: flex;
-    position: relative;
-    bottom: 0px;
 }
 
 .edit-form-input input {
@@ -70,11 +63,17 @@ ul {
 
 li {
     display: flex;
-    /* line-height: 29px; */
+    height: 35px;
     justify-content: space-between;
     text-align: left;
     padding: 8px 0;
     border-bottom: 1px solid #ccc;
+}
+
+
+.todo-text {
+    width: 269px;
+    text-align: left;
 }
 
 #totalNotes {
@@ -83,4 +82,23 @@ li {
 
 #totalFilteredNotes {
     margin-bottom: 10px;
+}
+
+.last-note {
+    border-bottom: none;
+}
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.5s ease !important;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0 !important;
+}
+
+.list-leave-active {
+    position: absolute !important;
 }
